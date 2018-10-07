@@ -1,9 +1,9 @@
 // VARIBLES //
     var charactersArry = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",];
     var userChoice = []; // Blank array created
-    var winCount = "0";  // Start with blank placeholder
-    var looseCount = "0";  // Start with blank placeholder
-    var guessesLeft = "0";  // Start with blank placeholder
+    var winCount = "";  // Start with blank placeholder
+    var looseCount = "";  // Start with blank placeholder
+    var guessCount = "";  // Start with blank placeholder
 
 
 // GAME INITALIZES RESETS COUNTS
@@ -15,7 +15,7 @@ initalizeGame()
     // var userChoice_Display = document.querySelector("#userChoice_Display").innerHTML = userChoice;
     // var winCount_Display = document.querySelector("#winCount_Display").innerHTML = winCount;
     // var looseCount_Display = document.querySelector("#looseCount_Display").innerHTML = looseCount;
-    // var guessesLeft_Display = document.querySelector("#guessesLeft_Display").innerHTML = guessesLeft;
+    // var guessCount_Display = document.querySelector("#guessCount_Display").innerHTML = guessCount;
 
 
 // FUNCTIONS //
@@ -30,35 +30,40 @@ initalizeGame()
 // UPDATES element #userChoice_Display with global var userChoice
     function userChoice_Display() { // Creates function named userChoice_Display with empty varible (). Curly brackets open the function.
         document.querySelector("#userChoice_Display").innerHTML = userChoice;
-        // Accesses the "document" element userChoice_Display. .innerHTML writes the value of UserChoice to the userChoice_Display array
-    }    
+    }   // Accesses the "document" element userChoice_Display. .innerHTML writes the value of UserChoice to the userChoice_Display array   
 
 //  UPDATES element #winCount_Display with global var winCount
     function winCount_Display() { // Creates function named winCount_Display with empty varible (). Curly brackets open the function.
         document.querySelector("#winCount_Display").innerHTML = winCount; 
-    // Accesses the "document" element userChoice_Display. .innerHTML writes the output if UserChoice to the userChoice_Display array
-    }    
+    }   // Accesses the "document" element userChoice_Display. .innerHTML writes the output if UserChoice to the userChoice_Display array   
 
 //  UPDATES element #looseCount_Display with global var looseCount 
     function looseCount_Display() { // Creates function named looseCount_Display with empty varible (). Curly brackets open the function.
         document.querySelector("#looseCount_Display").innerHTML = looseCount;
-    // Accesses the "document" element userChoice_Display. .innerHTML writes the output if UserChoice to the userChoice_Display array
-    }   
+    }   // Accesses the "document" element userChoice_Display. .innerHTML writes the output if UserChoice to the userChoice_Display array
     
-//  UPDATES element #guessesLeft_Display with global var guessesLeft 
-    function guessesLeft_Display() { // Creates function named guessesLeft_Display with empty varible (). Curly brackets open the function.
-        document.querySelector("#guessesLeft_Display").innerHTML = guessesLeft;
-    // Accesses the "document" element userChoice_Display. .innerHTML writes the output if UserChoice to the userChoice_Display array
-    }   
+//  UPDATES element #guessCount_Display with global var guessCount 
+    function guessCount_Display() { // Creates function named guessCount_Display with empty varible (). Curly brackets open the function.
+        document.querySelector("#guessCount_Display").innerHTML = guessCount;
+    }   // Accesses the "document" element userChoice_Display. .innerHTML writes the output if UserChoice to the userChoice_Display array
+       
+//  RESETS GAME
+    function initalizeGame() { // Set wins and losses to 0 guessCount to 9 clear userChoice_Display
+        console.log('---- initializeGame ----')
+        winCount = 0; console.log('winCount: ' + winCount)
+        looseCount = 0; console.log('looseCount: ' + looseCount)
+        guessCount = 9; console.log('guessCount: ' + guessCount)
+        userChoice.length = 0; console.log('userChoice array:' + userChoice)
+    }
 
-
-// * // if guessesLeft = more then 0 the continue loop otherwise resetRound
-    
-    // while guessesLeft > 0 {}
-
+//  RESET ROUND
     // function resetRound() {
-    // guessesLeft = 9;
+    // guessCount = 9;
+    // clears the array and allows keypress
     // }
+
+// * // if guessCount = more then 0 the continue loop otherwise resetRound
+    // functino guessUpdate
 
 
 // ComputerChoice picks from characterArry
@@ -72,6 +77,10 @@ initalizeGame()
     console.log('---- computerChoice ----')
     console.log(computerChoice);
   
+if (guessCount > 0) { // Allows round to be played
+
+    console.log('guessCount: ' + guessCount)
+
     //  1. Document awaits any button pressed and released, creates a function (event)
    document.onkeyup = function(event) {
        // Get user input. _Next assign var keyPress
@@ -99,37 +108,34 @@ initalizeGame()
         //  which is a global array. Update the display.            winCount++;
             
             winCount++; // x = x + 1
-            winCount_Display() // Update winCount_Display
-            console.log('---- winCount ----')
-            console.log(winCount);
-            userChoice_Display // Updates display
-            guessesLeft--
+            winCount_Display(); // Update winCount_Display
+            console.log('winCount: ' + winCount);
+            // console.log(winCount); // Shortened to one line
+            userChoice_Display(); // Updates display
+            guessCount--; // x = x - 1
+            guessCount_Display();  // HELP! guessCount not updating
             // * // resetRound // needs start from the begining without initalizeGame
         }
 
         else if (userChoice != computerChoice) {
             // function 
             looseCount++;
-            looseCount_Display()
-            console.log('---- looseCount ----')
-            console.log(looseCount);
-            userChoice_Display // Updates display
-            guessesLeft--
+            looseCount_Display();
+            console.log('looseCount: ' + looseCount);
+            // console.log(looseCount); // Shortened to one line
+            userChoice_Display(); // Updates display
+            guessCount--;  // HELP! guessCount not updating
+            guessCount_Display();
+            console.log('guessCount: ' + guessCount);
         }
     } // Close the funtion 
+} // Close if true line 83
+
+else if (guessCount === 0) {
+    //resetRound
+}
 
 
-// Outside of for loop resets everything
-
-
-
-        function initalizeGame() { // Set wins and losses to 0 guessesLeft to 9 clear userChoice_Display
-            console.log('---- initializeGame ----')
-            winCount = 0; console.log('winCount--' + winCount)
-            looseCount = 0; console.log('looseCount--' + looseCount)
-            guessesLeft = 9; console.log('guessesLeft--' + guessesLeft)
-            userChoice.length = 0; console.log(userChoice)
-        }
 
     // var charsTyped = [];
 
