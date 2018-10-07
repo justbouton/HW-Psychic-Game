@@ -1,7 +1,7 @@
 // VARIBLES //
     var charactersArry = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",];
     var userChoice = [];
-    var winCount = "0";  // Testing which works
+    var winCount = 0;  // Testing which works
     var looseCount = 0;  // Testing which works
     var guessesLeft = "";  // Testing which works
 
@@ -9,8 +9,8 @@
 
     // USE THIS FORMAT? document.querySelector("#question").innerHTML = "Game Over!";
 
-    var userChoice_Display = document.querySelector("#userChoice_Display").innerHTML = userChoice;
-    // var winCount_Display = document.querySelector("#winCount_Display").innerHTML = winCount;
+    // var userChoice_Display = document.querySelector("#userChoice_Display").innerHTML = userChoice;
+    var winCount_Display = document.querySelector("#winCount_Display").innerHTML = winCount;
     // var looseCount_Display = document.querySelector("#looseCount_Display").innerHTML = looseCount;
     // var guessesLeft_Display = document.querySelector("#guessesLeft_Display").innerHTML = guessesLeft;
     // * // Eventually use this.display?
@@ -28,17 +28,10 @@
    
     function userChoice_Display() { // Creates a function named userChoice_Display with empty varible (). Curly brackets open 
                                     // the function.
-        document.querySelector("#userChoice_Display").innerHTML = userChoice;
-
-    }   // Accesses the "document" element userChoice_Display. .innerHTML writes the output to the element userChoice_Display
-    //  which is a global array and update the display.
+        document.querySelector("#userChoice_Display").innerHTML = userChoice; // HELP! WILL NOT UPDATE DISPLAY
+        // Accesses the "document" element userChoice_Display. .innerHTML writes the output if UserChoice to the userChoice_Display array
+    }       
     
-    userChoice++ // adds the var to itself to update the user choice arrary // x = x + 1 
-                // * spaces between characters with comma 
-
-    console.log('---- winCount before userChoice++ ----')
-    console.log(winCount);
-    console.log(userChoice++);
 
 // ComputerChoice picks from characterArry
 
@@ -70,13 +63,21 @@
            // Accesses the "document" element userChoice_Display. .innerHTML writes the output to the element userChoice_Display
         //  which is a global array. Update the display.            winCount++;
     
-
-
-            console.log('---- winCount before WinCount++ ----')
-            console.log(winCount);
             winCount++; // x = x + 1
-            } // Close the funtion
-        };// Cose if statement 
+            console.log('---- winCount after WinCount++ ----')
+            console.log(winCount);
+            userChoice_Display // Updates display?
+// // // resetRound // needs start from the begining without initalizeGame
+        }
+
+        else if (userChoice != computerChoice) {
+            // function 
+            looseCount++;
+            console.log('---- looseCount after loose++ ----')
+            console.log(looseCount);
+            userChoice_Display // Updates display?
+        }
+    } // Close the funtion
             
         // else if (true) { //
             // document.getElementById("userChoice_Display").innerHTML = "userChoice";
@@ -85,15 +86,15 @@
     
 
 
-// Outside of for loop
+// Outside of for loop resets everything
 
 
 
         function initalizeGame() { // Set wins and losses to 0 guessesLeft to 9 clear userChoice_Display
-        winCount = 0;
-        looseCount = 1;
-        guessesLeft = 6;
-        userChoice = ("Press a character to begin...")
+            winCount = 0;
+            looseCount = 1;
+            guessesLeft = 6;
+            userChoice = "";
         }
             
     
