@@ -4,6 +4,8 @@
     var winCount = "";  // Start with blank placeholder
     var looseCount = "";  // Start with blank placeholder
     var guessCount = "";  // Start with blank placeholder
+    var computerChoice = ""; // charactersArry[Math.floor(Math.random() * charactersArry.length)];
+
 
 
 // GAME INITALIZES RESETS COUNTS
@@ -47,6 +49,13 @@ initalizeGame()
         document.querySelector("#guessCount_Display").innerHTML = guessCount;
     }   // Accesses the "document" element userChoice_Display. .innerHTML writes the output if UserChoice to the userChoice_Display array
        
+// * // CREATE FUNCTION?
+// //  COMPUTER PICKS RANDOM CHARACTER
+    function computerChoiceChar() {
+        computerChoice = charactersArry[Math.floor(Math.random() * charactersArry.length)];
+    }
+
+
 //  RESETS GAME
     function initalizeGame() { // Set wins and losses to 0 guessCount to 9 clear userChoice_Display
         console.log('---- initializeGame ----')
@@ -54,13 +63,17 @@ initalizeGame()
         looseCount = 0; console.log('looseCount: ' + looseCount)
         guessCount = 9; console.log('guessCount: ' + guessCount)
         userChoice.length = 0; console.log('userChoice array:' + userChoice)
+        computerChoiceChar();
     }
 
 //  RESET ROUND
-    // function resetRound() {
-    // guessCount = 9;
-    // clears the array and allows keypress
-    // }
+    function resetRound() {
+        guessCount = 9; // sets guessCount to 9
+        userChoice.length = 0; // clears the array and allows keypress
+        userChoice_Display();
+        guessCount_Display();
+        computerChoiceChar();
+    }
 
 // * // if guessCount = more then 0 the continue loop otherwise resetRound
     // functino guessUpdate
@@ -72,12 +85,12 @@ initalizeGame()
     //  picks a random value "between 1 and 25" and multiplies it by CharactersArry.length.
     // .length give you a numberical value equal to the number of characters in the array 25. "Math.floor rounds the number down. Run this first 
     // then Multiplies by the random in charactersArry number.  Max 25 from length 
-    var computerChoice = charactersArry[Math.floor(Math.random() * charactersArry.length)];
+// MOVED TO     // var computerChoice = charactersArry[Math.floor(Math.random() * charactersArry.length)];
     
     console.log('---- computerChoice ----')
     console.log(computerChoice);
   
-if (guessCount > 0) { // Allows round to be played
+if (guessCount => 0) { // Allows round to be played
 
     console.log('guessCount: ' + guessCount)
 
@@ -111,10 +124,10 @@ if (guessCount > 0) { // Allows round to be played
             winCount_Display(); // Update winCount_Display
             console.log('winCount: ' + winCount);
             // console.log(winCount); // Shortened to one line
-            userChoice_Display(); // Updates display
+// Moved into resetRound: userChoice_Display(); // Updates display
             guessCount--; // x = x - 1
-            guessCount_Display();  // HELP! guessCount not updating
-            // * // resetRound // needs start from the begining without initalizeGame
+// Moved into resetRound: guessCount_Display();  // Added () to fix updating
+            resetRound() // needs start from the begining without initalizeGame
         }
 
         else if (userChoice != computerChoice) {
@@ -131,8 +144,8 @@ if (guessCount > 0) { // Allows round to be played
     } // Close the funtion 
 } // Close if true line 83
 
-else if (guessCount === 0) {
-    //resetRound
+else {
+    resetRound()
 }
 
 
