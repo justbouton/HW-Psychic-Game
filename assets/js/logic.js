@@ -57,13 +57,14 @@
     var keyPress = event.key; // This varible captures the key press and gives it the varible of keyPress. 
         // * // Should exclue anything but charactersArry
     
-        // NEED TO STORE event.key to array userChoice
+        // Store event.key to array userChoice
     userChoice.push(keyPress); // Storing to arry userChoice
     // * // Need to display the button presses.
 
     console.log('---- userChoice ----');
     console.log(userChoice); // Displays userChoice in console.log. 
 
+    userChoice_Display()
 
 // Compare user userChoice to computerChoice;
 
@@ -100,19 +101,6 @@
             guessesLeft = 9; console.log(guessesLeft)
             userChoice.length = 0; console.log(userChoice)
         }
-            
-    
-
-
-
-
-        // WILL NOT WORK WITHOUT (true)
-                                    // else if (true) {
-                                    //     alert('Try again!')
-                                    //     looseCount++
-                                    //     guessesLeft--;
-                                    //     userChoice++
-                                    // }
 
     // var charsTyped = [];
 
