@@ -1,48 +1,58 @@
 // VARIBLES //
     var charactersArry = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",];
-    var userChoice = []; // HELP! IS NOT POPULATING WITH .push line 60  // Blank array created
-    var winCount = 0;  // Testing which works
-    var looseCount = 0;  // Testing which works
-    var guessesLeft = "";  // Testing which works
+    var userChoice = []; // Blank array created
+    var winCount = "0";  // Start with blank placeholder
+    var looseCount = "0";  // Start with blank placeholder
+    var guessesLeft = "0";  // Start with blank placeholder
 
-    // CREATE AS FUNCTION?
 
-    // TEST WITH: document.querySelector("#question").innerHTML = "Game Over!";
+// GAME INITALIZES RESETS COUNTS
 
+initalizeGame()
+
+
+// CREATE AS FUNCTIONS?
     // var userChoice_Display = document.querySelector("#userChoice_Display").innerHTML = userChoice;
     // var winCount_Display = document.querySelector("#winCount_Display").innerHTML = winCount;
     // var looseCount_Display = document.querySelector("#looseCount_Display").innerHTML = looseCount;
     // var guessesLeft_Display = document.querySelector("#guessesLeft_Display").innerHTML = guessesLeft;
-    // * // Eventually use this.display?
+
 
 // FUNCTIONS //
-// * // CREATE FUNCTIONS FOR VARS ABOVE?
+// * // Eventually use this.display?
 
-//document.getElementById("userChoice_Display").innerHTML = userChoice;
-//access the document object with "querySelector" element of #userChoice_Display. 
-// .innerHTML writes to the element userChoice which then adds to the value the the var called userChoice++;
+// * // CREATE FUNCTIONS FOR VARS ABOVE?
+//  document.getElementById("userChoice_Display").innerHTML = userChoice;
+    //accesses the document object with "querySelectorById" HTML element #userChoice_Display. 
+    // .innerHTML writes the array userChoice to the element #userChoice_Display;
    
+// * // Create for loop to utilize "any_Display" (Should be DRY)
 // UPDATES element #userChoice_Display with global var userChoice
-    function userChoice_Display() { // Creates a function named userChoice_Display with empty varible (). Curly brackets open 
-                                    // the function.
-        document.querySelector("#userChoice_Display").innerHTML = userChoice; // HELP! WILL NOT UPDATE DISPLAY
-        // Accesses the "document" element userChoice_Display. .innerHTML writes the output if UserChoice to the userChoice_Display array
+    function userChoice_Display() { // Creates function named userChoice_Display with empty varible (). Curly brackets open the function.
+        document.querySelector("#userChoice_Display").innerHTML = userChoice;
+        // Accesses the "document" element userChoice_Display. .innerHTML writes the value of UserChoice to the userChoice_Display array
     }    
 
 //  UPDATES element #winCount_Display with global var winCount
-    function winCount_Display() { // Creates a function named userChoice_Display with empty varible (). Curly brackets open 
-                                  // the function.
-    document.querySelector("#winCount_Display").innerHTML = winCount; // HELP! WILL NOT UPDATE DISPLAY
+    function winCount_Display() { // Creates function named winCount_Display with empty varible (). Curly brackets open the function.
+        document.querySelector("#winCount_Display").innerHTML = winCount; 
     // Accesses the "document" element userChoice_Display. .innerHTML writes the output if UserChoice to the userChoice_Display array
     }    
 
 //  UPDATES element #looseCount_Display with global var looseCount 
-    function looseCount_Display() { // Creates a function named userChoice_Display with empty varible (). Curly brackets open 
-                                   // the function.
-    document.querySelector("#looseCount_Display").innerHTML = looseCount; // HELP! WILL NOT UPDATE DISPLAY
+    function looseCount_Display() { // Creates function named looseCount_Display with empty varible (). Curly brackets open the function.
+        document.querySelector("#looseCount_Display").innerHTML = looseCount;
     // Accesses the "document" element userChoice_Display. .innerHTML writes the output if UserChoice to the userChoice_Display array
-    }    
-// * // loop while guessesLeft = more then 0 the continue loop otherwise resetRound
+    }   
+    
+//  UPDATES element #guessesLeft_Display with global var guessesLeft 
+    function guessesLeft_Display() { // Creates function named guessesLeft_Display with empty varible (). Curly brackets open the function.
+        document.querySelector("#guessesLeft_Display").innerHTML = guessesLeft;
+    // Accesses the "document" element userChoice_Display. .innerHTML writes the output if UserChoice to the userChoice_Display array
+    }   
+
+
+// * // if guessesLeft = more then 0 the continue loop otherwise resetRound
     
     // while guessesLeft > 0 {}
 
@@ -93,6 +103,7 @@
             console.log('---- winCount ----')
             console.log(winCount);
             userChoice_Display // Updates display
+            guessesLeft--
             // * // resetRound // needs start from the begining without initalizeGame
         }
 
@@ -103,6 +114,7 @@
             console.log('---- looseCount ----')
             console.log(looseCount);
             userChoice_Display // Updates display
+            guessesLeft--
         }
     } // Close the funtion 
 
@@ -113,9 +125,9 @@
 
         function initalizeGame() { // Set wins and losses to 0 guessesLeft to 9 clear userChoice_Display
             console.log('---- initializeGame ----')
-            winCount = 0; console.log(winCount)
-            looseCount = 1; console.log(looseCount)
-            guessesLeft = 9; console.log(guessesLeft)
+            winCount = 0; console.log('winCount--' + winCount)
+            looseCount = 0; console.log('looseCount--' + looseCount)
+            guessesLeft = 9; console.log('guessesLeft--' + guessesLeft)
             userChoice.length = 0; console.log(userChoice)
         }
 
