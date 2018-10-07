@@ -22,13 +22,27 @@
 //access the document object with "querySelector" element of #userChoice_Display. 
 // .innerHTML writes to the element userChoice which then adds to the value the the var called userChoice++;
    
+// UPDATES element #userChoice_Display with global var userChoice
     function userChoice_Display() { // Creates a function named userChoice_Display with empty varible (). Curly brackets open 
                                     // the function.
         document.querySelector("#userChoice_Display").innerHTML = userChoice; // HELP! WILL NOT UPDATE DISPLAY
         // Accesses the "document" element userChoice_Display. .innerHTML writes the output if UserChoice to the userChoice_Display array
     }    
 
-    // * // loop while guessesLeft = more then 0 the continue loop otherwise resetRound
+//  UPDATES element #winCount_Display with global var winCount
+    function winCount_Display() { // Creates a function named userChoice_Display with empty varible (). Curly brackets open 
+                                  // the function.
+    document.querySelector("#winCount_Display").innerHTML = winCount; // HELP! WILL NOT UPDATE DISPLAY
+    // Accesses the "document" element userChoice_Display. .innerHTML writes the output if UserChoice to the userChoice_Display array
+    }    
+
+//  UPDATES element #looseCount_Display with global var looseCount 
+    function looseCount_Display() { // Creates a function named userChoice_Display with empty varible (). Curly brackets open 
+                                   // the function.
+    document.querySelector("#looseCount_Display").innerHTML = looseCount; // HELP! WILL NOT UPDATE DISPLAY
+    // Accesses the "document" element userChoice_Display. .innerHTML writes the output if UserChoice to the userChoice_Display array
+    }    
+// * // loop while guessesLeft = more then 0 the continue loop otherwise resetRound
     
     // while guessesLeft > 0 {}
 
@@ -61,8 +75,9 @@
     userChoice.push(keyPress); // Storing to arry userChoice
     // * // Need to display the button presses.
 
-    console.log('---- userChoice ----');
-    console.log(userChoice); // Displays userChoice in console.log. 
+    // Troublshooting userChoice
+    // console.log('---- userChoice ----');
+    // console.log(userChoice); // Displays userChoice in console.log. 
 
     userChoice_Display()
 
@@ -74,18 +89,20 @@
         //  which is a global array. Update the display.            winCount++;
             
             winCount++; // x = x + 1
+            winCount_Display() // Update winCount_Display
             console.log('---- winCount ----')
             console.log(winCount);
-            userChoice_Display // Updates display?
+            userChoice_Display // Updates display
             // * // resetRound // needs start from the begining without initalizeGame
         }
 
         else if (userChoice != computerChoice) {
             // function 
             looseCount++;
+            looseCount_Display()
             console.log('---- looseCount ----')
             console.log(looseCount);
-            userChoice_Display // Updates display?
+            userChoice_Display // Updates display
         }
     } // Close the funtion 
 
