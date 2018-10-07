@@ -1,16 +1,16 @@
 // VARIBLES //
     var charactersArry = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",];
-    var userChoice = [];
+    var userChoice = ""; // HELP! IS NOT POPULATING WITH .push line 66
     var winCount = 0;  // Testing which works
     var looseCount = 0;  // Testing which works
     var guessesLeft = "";  // Testing which works
 
     // CREATE AS FUNCTION?
 
-    // USE THIS FORMAT? document.querySelector("#question").innerHTML = "Game Over!";
+    // TEST WITH: document.querySelector("#question").innerHTML = "Game Over!";
 
     // var userChoice_Display = document.querySelector("#userChoice_Display").innerHTML = userChoice;
-    var winCount_Display = document.querySelector("#winCount_Display").innerHTML = winCount;
+    // var winCount_Display = document.querySelector("#winCount_Display").innerHTML = winCount;
     // var looseCount_Display = document.querySelector("#looseCount_Display").innerHTML = looseCount;
     // var guessesLeft_Display = document.querySelector("#guessesLeft_Display").innerHTML = guessesLeft;
     // * // Eventually use this.display?
@@ -30,16 +30,15 @@
                                     // the function.
         document.querySelector("#userChoice_Display").innerHTML = userChoice; // HELP! WILL NOT UPDATE DISPLAY
         // Accesses the "document" element userChoice_Display. .innerHTML writes the output if UserChoice to the userChoice_Display array
-    }       
-    
+    }    
 
 // ComputerChoice picks from characterArry
 
     // .length runs first that asks for the numerical value of the array charactersArry. (Math.random() *) 
-    //  picks a random value "between 1 and 25"  and multipies is by CharactersArry.length.                     //``// HELP! WHERE DOES IT PICK 1-25
-    // .length give you a number value equal to the number of characters in the array 25. "Math.floor rounds the number down. Run this first 
-    // then Multiplies by the random in charactersArry number.  Max 25 from length, 
-    var computerChoice = charactersArry[Math.floor(Math.random() * charactersArry.length)]; // length = 25 
+    //  picks a random value "between 1 and 25" and multiplies it by CharactersArry.length.
+    // .length give you a numberical value equal to the number of characters in the array 25. "Math.floor rounds the number down. Run this first 
+    // then Multiplies by the random in charactersArry number.  Max 25 from length 
+    var computerChoice = charactersArry[Math.floor(Math.random() * charactersArry.length)];
     
     console.log('---- computerChoice ----')
     console.log(computerChoice);
@@ -49,20 +48,22 @@
        // Get user input. _Next assign to userChoice
        // * // toLowerCase //
 
-    // Key was pressed   
-    var userChoice = event.key; // This varible captures the key press and gives it the varible of userChoice. 
+// Key was pressed   
+    var keyPress = event.key; // This varible captures the key press and gives it the varible of userChoice. 
         // * // Should exclue anything but charactersArry
-
-    console.log(userChoice); // Displays userChoice in console.log and send to arry userChoice. Next we need to display the button presses.
+    
+    console.log('---- keyPress ----')
+    console.log(keyPress); // Displays userChoice in console.log and send to arry userChoice. Next we need to display the button presses.
 
 
 // Compare user userChoice to computerChoice;
 
         // if userChoice match exactly then is === 'true' executive commands
-        if (userChoice === computerChoice) {
+        if (keyPress === computerChoice) {
            // Accesses the "document" element userChoice_Display. .innerHTML writes the output to the element userChoice_Display
         //  which is a global array. Update the display.            winCount++;
-    
+            
+            userChoice.push
             winCount++; // x = x + 1
             console.log('---- winCount after WinCount++ ----')
             console.log(winCount);
@@ -78,6 +79,8 @@
             userChoice_Display // Updates display?
         }
     } // Close the funtion
+
+    
             
         // else if (true) { //
             // document.getElementById("userChoice_Display").innerHTML = "userChoice";
