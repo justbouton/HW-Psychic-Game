@@ -48,7 +48,10 @@ initalizeGame()
     function guessCount_Display() { // Creates function named guessCount_Display with empty varible (). Curly brackets open the function.
         document.querySelector("#guessCount_Display").innerHTML = guessCount;
     }   // Accesses the "document" element userChoice_Display. .innerHTML writes the output if UserChoice to the userChoice_Display array
-       
+    
+// * // CREATE ONE FUNCTION TO UPDATE ALL DISPLAYS
+
+
 // * // CREATE FUNCTION?
 // //  COMPUTER PICKS RANDOM CHARACTER
     function computerChoiceChar() {
@@ -70,9 +73,10 @@ initalizeGame()
     function resetRound() {
         guessCount = 9; // sets guessCount to 9
         userChoice.length = 0; // clears the array and allows keypress
-        userChoice_Display();
+        userChoice_Display(); 
         guessCount_Display();
         computerChoiceChar();
+        // console.log('- - resetRound - -')
     }
 
 // * // if guessCount = more then 0 the continue loop otherwise resetRound
@@ -80,19 +84,15 @@ initalizeGame()
 
 
 // ComputerChoice picks from characterArry
-
+// CREATED var and function    // var computerChoice = charactersArry[Math.floor(Math.random() * charactersArry.length)];
     // .length runs first that asks for the numerical value of the array charactersArry. (Math.random() *) 
     //  picks a random value "between 1 and 25" and multiplies it by CharactersArry.length.
     // .length give you a numberical value equal to the number of characters in the array 25. "Math.floor rounds the number down. Run this first 
     // then Multiplies by the random in charactersArry number.  Max 25 from length 
-// MOVED TO     // var computerChoice = charactersArry[Math.floor(Math.random() * charactersArry.length)];
     
-    console.log('---- computerChoice ----')
+    console.log('---- computerChoice ----');
     console.log(computerChoice);
   
-if (guessCount => 0) { // Allows round to be played
-
-    console.log('guessCount: ' + guessCount)
 
     //  1. Document awaits any button pressed and released, creates a function (event)
    document.onkeyup = function(event) {
@@ -113,6 +113,10 @@ if (guessCount => 0) { // Allows round to be played
 
     userChoice_Display()
 
+    if (guessCount > 1) { // Allows round to be played
+
+        // console.log('after if guessCount: ' + guessCount)
+
 // Compare user userChoice to computerChoice;
 
         // if userChoice match exactly then is === 'true' executive commands
@@ -122,7 +126,7 @@ if (guessCount => 0) { // Allows round to be played
             
             winCount++; // x = x + 1
             winCount_Display(); // Update winCount_Display
-            console.log('winCount: ' + winCount);
+            // console.log('Win - winCount: ' + winCount);
             // console.log(winCount); // Shortened to one line
 // Moved into resetRound: userChoice_Display(); // Updates display
             guessCount--; // x = x - 1
@@ -134,19 +138,21 @@ if (guessCount => 0) { // Allows round to be played
             // function 
             looseCount++;
             looseCount_Display();
-            console.log('looseCount: ' + looseCount);
+            // console.log('Lost - looseCount: ' + looseCount);
             // console.log(looseCount); // Shortened to one line
             userChoice_Display(); // Updates display
-            guessCount--;  // HELP! guessCount not updating
-            guessCount_Display();
-            console.log('guessCount: ' + guessCount);
+            guessCount--;  // x = x - 1
+            guessCount_Display(); // Updates display
+            // console.log('Lost - guessCount: ' + guessCount);
         }
     } // Close the funtion 
-} // Close if true line 83
+    else {
+        resetRound(); 
+        console.log('- - resetRound triggered by 0 guessesLeft if statement - -');
+    }
+} // Close if guessesLeft != 0 line 95
 
-else {
-    resetRound()
-}
+
 
 
 
