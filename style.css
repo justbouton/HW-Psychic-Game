@@ -1,0 +1,53 @@
+body {
+    width: 960px;
+    padding: 20px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.scoreboard {
+    margin: 20px auto;
+    border: 3px solid black;
+    width: 350px;
+    padding: 15px 20px;
+    position: relative;
+}
+
+#win {
+    position: absolute;
+    top: 5px;
+    left: -35px;
+    color: white;
+    background-color: green;
+    padding: 10px;
+    font-weight: bold;
+    border: black solid 2px;
+}
+
+#loose {
+    position: absolute;
+    top: 5px;
+    right: -40px;
+    color: white;
+    background-color: red;
+    padding: 10px;
+    font-weight: bold;
+    border: black solid 2px;
+}
+
+#guessLeft {
+    position: absolute;
+    bottom: -40px;
+    left: 130px;
+    color: white;
+    background-color: grey;
+    padding: 10px;
+    font-weight: bold;
+    border: black solid 2px;
+}
+
+#guesses{
+    position: relative;
+    bottom: 10px;
+}
